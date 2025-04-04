@@ -1,0 +1,146 @@
+﻿<Window x:Class="PresentationLayer.Views.AddEditItem"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PresentationLayer.Views"
+        mc:Ignorable="d"
+        xmlns:modernwpf="clr-namespace:ModernWpf.Controls;assembly=ModernWpf"
+    xmlns:toolkit="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+    Title="Adding Item..."
+    Height="500"
+    Width="1000"
+    Background="{DynamicResource SystemControlAltHighAcrylicWindowMediumBrush}">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style TargetType="toolkit:IntegerUpDown">
+                <Setter Property="Background" Value="#2B2B2B"/>
+                <Setter Property="Foreground" Value="#E6E6E6"/>
+                <Setter Property="BorderBrush" Value="#4D4D4D"/>
+                <Setter Property="Padding" Value="8"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="TextAlignment" Value="Left"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="FontFamily" Value="Segoe UI"/>
+                <Setter Property="Margin" Value="0,0,0,10"/>
+            </Style>
+
+            <Style TargetType="toolkit:DoubleUpDown">
+                <Setter Property="Background" Value="#2B2B2B"/>
+                <Setter Property="Foreground" Value="#E6E6E6"/>
+                <Setter Property="BorderBrush" Value="#4D4D4D"/>
+                <Setter Property="Padding" Value="8"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="TextAlignment" Value="Left"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="FontFamily" Value="Segoe UI"/>
+                <Setter Property="Margin" Value="0,0,0,10"/>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="4*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Column 0: Basic Item Info -->
+            <StackPanel Grid.Column="0" Margin="0,0,20,0">
+                <TextBlock Text="Item Name:" Margin="0,0,0,5" Foreground="White"/>
+                <TextBox x:Name="tbxItemName" Text="" Margin="10,0,10,10"/>
+
+                <TextBlock Text="Quantity On Hand:" Margin="0,0,0,5" Foreground="White"/>
+                <toolkit:IntegerUpDown x:Name="intUpDownQuantityOnHand" Margin="10,0,10,10" Minimum="0" Value="0" PreviewTextInput="IntegerUpDown_PreviewTextInput"/>
+
+                <TextBlock Text="Item Status:" Margin="0,0,0,5" Foreground="White"/>
+                <ComboBox x:Name="cbxStatus"
+                          ItemsSource="{Binding StatusOptions}"
+                          SelectedIndex="0"
+                          Margin="10,0,10,10"
+                          HorizontalAlignment="Stretch"/>
+
+                <TextBlock Text="Description:" Margin="0,0,0,5" Foreground="White"/>
+                <TextBox x:Name="tbxItemDescription" 
+                         TextWrapping="Wrap" 
+                         AcceptsReturn="True"
+                         Margin="10,0,10,10"
+                         Height="60"/>
+            </StackPanel>
+
+            <!-- Column 1: Pricing and Identification -->
+            <StackPanel Grid.Column="1" Margin="0,0,20,0">
+                <TextBlock Text="Unit Price:" Margin="0,0,0,5" Foreground="White"/>
+                <toolkit:DoubleUpDown x:Name="doubleUpDownUnitPrice" 
+                                      Minimum="0" 
+                                      Increment="0.01"
+                                      FormatString="C2"
+                                      Value="0.00"
+                                      Width="150"/>
+
+                <TextBlock Text="Serial Number:" Margin="0,0,0,5" Foreground="White" />
+                <TextBox x:Name="tbxSerialNumber" Text="" Margin="0,0,0,10" Width="150"/>
+
+                <TextBlock Text="Warranty Period (Months):" Margin="0,0,0,5" Foreground="White"/>
+                <toolkit:IntegerUpDown x:Name="intUpDownWarrentyMonths" Minimum="0" Value="0" Width="150" PreviewTextInput="IntegerUpDown_PreviewTextInput"/>
+
+                <TextBlock Text="Reorder Level:" Margin="0,0,0,5" Foreground="White"/>
+                <toolkit:IntegerUpDown x:Name="intUpDownReorderLevel" Minimum="0" Value="0" Width="150" PreviewTextInput="IntegerUpDown_PreviewTextInput"/>
+            </StackPanel>
+
+            <!-- Column 2: Weight and Active State -->
+            <StackPanel Grid.Column="2" Margin="0,0,20,0">
+                <TextBlock Text="Item Weight:" Margin="0,0,0,5" Foreground="White"/>
+                <toolkit:DoubleUpDown x:Name="doubleUpDownItemWeight" Minimum="0" Increment="0.01" 
+                                       FormatString="F3" Value="0.000" Width="150"/>
+
+                <TextBlock Text="Item Active:" Margin="0,0,0,5" Foreground="White"/>
+                <CheckBox x:Name="ckbItemActive" Content="Active" IsChecked="True" Margin="0,0,0,10" Width="150"/>
+            </StackPanel>
+
+            <!-- Column 3: Location and Vendor -->
+            <StackPanel Grid.Column="3">
+                <TextBlock Text="Inventory Location:" Margin="0,0,0,5" Foreground="White"/>
+                <TextBox x:Name="tbxLocationName" 
+                         TextWrapping="Wrap" 
+                         AcceptsReturn="True"
+                         Margin="10,0,10,10"
+                         Height="30"/>
+
+                <TextBlock Text="Inventory GUID:" Margin="0,0,0,5" Foreground="White"/>
+                <TextBox x:Name="tbxLocationGUID" 
+                         TextWrapping="Wrap" 
+                         AcceptsReturn="True" 
+                         Margin="10,0,10,10"
+                         Height="30"/>
+
+                <TextBlock Text="Vendor:" Margin="0,0,0,5" Foreground="White" />
+                <ComboBox x:Name="cbxVendor"
+                          ItemsSource="{Binding VendorNames}"
+                          SelectedIndex="-1"
+                          Margin="10,0,10,10"
+                          HorizontalAlignment="Stretch"/>
+
+                <!-- Vendor Buttons -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button x:Name="btnAddVendor" Content="Add Vendor" Width="90" Padding="5" Margin="10 0 10 0" Click="btnAddVendor_Click" />
+                    <Button x:Name="btnEditVendor" Content="Edit Vendor" Width="90" Padding="5" Click="btnEditVendor_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right" Margin="0,20,0,0">
+            <Button x:Name="btnSave" Content="Save" Width="100" Margin="0 0 10 0" Click="btnSave_Click"/>
+            <Button x:Name="btnCancel" Content="Cancel" Width="100" Click="btnCancel_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,97 @@
+﻿<Page x:Class="PresentationLayer.InventoryView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      xmlns:ui="http://schemas.modernwpf.com/2019"
+      xmlns:local="clr-namespace:PresentationLayer"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="InventoryView">
+    <Page.Resources>
+        <!-- Style for DataGridColumnHeader -->
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <EventSetter Event="MouseRightButtonDown" Handler="InventoryColumnHeader_RightClick"/>
+        </Style>
+    </Page.Resources>
+    <Grid x:Name="Inventory">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="gridInventorySearch" Margin="10" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="75"/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="txtSearch"
+         Margin="5 5 5 0" HorizontalContentAlignment="Center" Height="30"
+         VerticalContentAlignment="Center" ToolTip="Search Here" KeyUp="txtSearch_KeyUp"/>
+            <ComboBox x:Name="cbxSearchCategory" Grid.Column="1" Margin="5 5 5 0"  Height="30" 
+                  Loaded="cbxSearchCategory_Loaded" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+            <Button x:Name="btnSearchButton" Grid.Column="2" Margin="5 5 5 0" Content="⌕" FontSize="20"
+                 Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch"/>
+        </Grid>
+        <Grid x:Name="gridInventory" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock x:Name="txtblkNoInventory" Text="No Inventory to display." HorizontalAlignment="Center"
+        VerticalAlignment="Center" Visibility="Collapsed"/>
+
+            <DataGrid x:Name="dgInventory" AutoGenerateColumns="False" HeadersVisibility="Column"
+        CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True"
+        HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+        SelectionChanged="dgInventory_SelectionChanged" SelectionMode="Single" 
+        Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="4" Loaded="dgInventory_Loaded">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Item ID" Binding="{Binding ItemID}" Width="Auto" Visibility="Visible"/>
+                    <DataGridTextColumn Header="Item" Binding="{Binding ItemName}" Width="Auto"/>
+                    <DataGridTextColumn Header="Vendor Name" Binding="{Binding Vendor.VendorName}" Width="*"/>
+                    <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*"/>
+                    <DataGridTextColumn Header="Quantity" Binding="{Binding QuantityOnHand}" Width="*"/>
+                    <DataGridTextColumn Header="Unit Price" Binding="{Binding UnitPrice}" Width="*"/>
+                    <DataGridTextColumn Header="Reorder Level" Binding="{Binding ReorderLevel}" Width="*"/>
+                    <DataGridTextColumn Header="Warrenty Period" Binding="{Binding WarrentyPeriodMonths}" Width="*"/>
+                    <DataGridTextColumn Header="Serial Number" Binding="{Binding SerialNumber}" Width="*"/>
+                    <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="*"/>
+                    <DataGridTextColumn Header="Item Weight" Binding="{Binding ItemWeight}" Width="*"/>
+                    <DataGridTextColumn Header="Location Name" Binding="{Binding Location.LocationName}" Width="*"/>
+                    <DataGridTextColumn Header="Location GUID" Binding="{Binding Location.LocationGUID}" Width="*"/>
+                    <DataGridTextColumn Header="Date Added" Binding="{Binding DateAdded}" Width="*"/>
+                    <DataGridTextColumn Header="Last Updated" Binding="{Binding LastUpdated}" Width="*"/>
+                    <DataGridTextColumn Header="Active" Binding="{Binding Active}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10 5 10 10">
+                <Button x:Name="btnAddInvItem" Content="Add Item" Width="120" Margin="0 0 10 0" Click="btnAddInvItem_Click"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10 5 10 10">
+                <Button x:Name="btnEditInvItem" Content="Edit Item" Width="120" Margin="0 0 10 0" Click="btnEditInvItem_Click" />
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10 5 10 10">
+                <Button x:Name="btnDeleteInvItem" Content="Remove Item" Width="120" Margin="0 0 10 0" Click="btnDeleteInvItem_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

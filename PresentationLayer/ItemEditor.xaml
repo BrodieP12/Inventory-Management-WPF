@@ -1,0 +1,14 @@
+﻿<Window x:Class="PresentationLayer.ItemEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PresentationLayer" xmlns:wpfToolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="ItemEditor" Height="450" Width="800">
+    <Grid>
+        <wpfToolkit:PropertyGrid Name="propertyGrid"
+                                 VerticalAlignment="Stretch"
+                                 HorizontalAlignment="Stretch" />
+    </Grid>
+</Window>

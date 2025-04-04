@@ -1,0 +1,104 @@
+﻿<Page x:Class="PresentationLayer.Views.AuditView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PresentationLayer.Helpers"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AuditView">
+    <Page.Resources>
+        <local:RemoveNewLinesConverter x:Key="RemoveNewLinesConverter"/>
+        <Style x:Key="NoWrapCellStyle" TargetType="DataGridCell">
+            <Setter Property="TextBlock.TextWrapping" Value="NoWrap"/>
+            <Setter Property="TextBlock.TextTrimming" Value="CharacterEllipsis"/>
+        </Style>
+    </Page.Resources>
+    <Grid x:Name="gridAudit" Margin="10" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock x:Name="txtblkNoAudits" Text="No Audits to display." HorizontalAlignment="Center"
+               VerticalAlignment="Center" Visibility="Collapsed"/>
+        <DataGrid x:Name="dgAudits" AutoGenerateColumns="False" HeadersVisibility="Column"
+              CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True"
+              HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single" 
+              Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="4" Loaded="dgAudits_Loaded">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="User's Full Name" Binding="{Binding UserFullName, Converter={StaticResource RemoveNewLinesConverter}}" Width="*" CellStyle="{StaticResource NoWrapCellStyle}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="NoWrap"/>
+                            <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Table name" Binding="{Binding TableName, Converter={StaticResource RemoveNewLinesConverter}}" Width="*" CellStyle="{StaticResource NoWrapCellStyle}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="NoWrap"/>
+                            <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Operation" Binding="{Binding Operation, Converter={StaticResource RemoveNewLinesConverter}}" Width="*" CellStyle="{StaticResource NoWrapCellStyle}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="NoWrap"/>
+                            <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Key Values" Binding="{Binding KeyValues, Converter={StaticResource RemoveNewLinesConverter}}" Width="*" CellStyle="{StaticResource NoWrapCellStyle}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="NoWrap"/>
+                            <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="New Values" Binding="{Binding NewValues, Converter={StaticResource RemoveNewLinesConverter}}" Width="*" CellStyle="{StaticResource NoWrapCellStyle}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="NoWrap"/>
+                            <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Table Name" Binding="{Binding TableName, Converter={StaticResource RemoveNewLinesConverter}}" Width="*" CellStyle="{StaticResource NoWrapCellStyle}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="NoWrap"/>
+                            <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Event Type" Binding="{Binding EventType, Converter={StaticResource RemoveNewLinesConverter}}" Width="*" CellStyle="{StaticResource NoWrapCellStyle}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="NoWrap"/>
+                            <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Event Data" Binding="{Binding EventData, Converter={StaticResource RemoveNewLinesConverter}}" Width="*" CellStyle="{StaticResource NoWrapCellStyle}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="NoWrap"/>
+                            <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

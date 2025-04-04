@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PresentationLayer", "PresentationLayer\PresentationLayer.csproj", "{B9D7DDAF-0A3A-42C5-B42C-91F4F0D31DC4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessFakes", "DataAccessFakes\DataAccessFakes.csproj", "{FF014181-821A-4444-9C42-119547E0987E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogicLayer", "LogicLayer\LogicLayer.csproj", "{22C69F5A-F70C-4924-9DC6-D4991A042A78}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataDomain", "DataDomain\DataDomain.csproj", "{178F3A93-3824-4256-94B4-0C32A3913A26}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{8DA9772C-554F-4A88-8EFD-5408508573BE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessInterfaces", "DataAccessInterfaces\DataAccessInterfaces.csproj", "{731E0787-C8AB-4D2B-9761-F16CE338AA72}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicLayerTests", "LogicLayerTests\LogicLayerTests.csproj", "{B234F2A9-2996-44B2-BE1C-B40D25DBEDF9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9D7DDAF-0A3A-42C5-B42C-91F4F0D31DC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9D7DDAF-0A3A-42C5-B42C-91F4F0D31DC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9D7DDAF-0A3A-42C5-B42C-91F4F0D31DC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9D7DDAF-0A3A-42C5-B42C-91F4F0D31DC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF014181-821A-4444-9C42-119547E0987E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF014181-821A-4444-9C42-119547E0987E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF014181-821A-4444-9C42-119547E0987E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF014181-821A-4444-9C42-119547E0987E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22C69F5A-F70C-4924-9DC6-D4991A042A78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22C69F5A-F70C-4924-9DC6-D4991A042A78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22C69F5A-F70C-4924-9DC6-D4991A042A78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22C69F5A-F70C-4924-9DC6-D4991A042A78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{178F3A93-3824-4256-94B4-0C32A3913A26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{178F3A93-3824-4256-94B4-0C32A3913A26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{178F3A93-3824-4256-94B4-0C32A3913A26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{178F3A93-3824-4256-94B4-0C32A3913A26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DA9772C-554F-4A88-8EFD-5408508573BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DA9772C-554F-4A88-8EFD-5408508573BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DA9772C-554F-4A88-8EFD-5408508573BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DA9772C-554F-4A88-8EFD-5408508573BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{731E0787-C8AB-4D2B-9761-F16CE338AA72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{731E0787-C8AB-4D2B-9761-F16CE338AA72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{731E0787-C8AB-4D2B-9761-F16CE338AA72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{731E0787-C8AB-4D2B-9761-F16CE338AA72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B234F2A9-2996-44B2-BE1C-B40D25DBEDF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B234F2A9-2996-44B2-BE1C-B40D25DBEDF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B234F2A9-2996-44B2-BE1C-B40D25DBEDF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B234F2A9-2996-44B2-BE1C-B40D25DBEDF9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7CF434F7-D99A-48A9-9EB6-46239ADA7408}
+	EndGlobalSection
+EndGlobal

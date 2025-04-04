@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PresentationLayer": {
+      "commandName": "Project",
+      "sqlDebugging": false
+    }
+  }
+}

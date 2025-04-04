@@ -1,0 +1,99 @@
+﻿<Window x:Class="PresentationLayer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PresentationLayer.Views"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="1400" Loaded="Window_Loaded"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="True">
+    <Window.Resources>
+
+    </Window.Resources>
+    <Grid>
+        <!-- Outer page grid -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition />
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <Menu Padding="20 0 0 0" Grid.Column="1">
+            <MenuItem Header="File" x:Name="mnuExit1" Click="mnuExit1_Click">
+                <MenuItem Header="Exit" x:Name="mnuExit"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Edit" x:Name="mnuEdit">
+                <MenuItem Header="Preferences" x:Name="mnuPreferences" Click="mnuPreferences_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Help" x:Name="mnuHelp">
+                <MenuItem Header="About" x:Name="mnuAbout"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <Button x:Name="btnToggleTheme" Grid.Column="0" Margin="1346,0,20,0" HorizontalAlignment="Stretch" Click="btnToggleTheme_Click">
+            <ui:FontIcon Glyph="&#xE706;" FontSize="16"/>
+        </Button>
+
+
+        <!-- end of inner grid for login controls -->
+
+        <ui:NavigationView x:Name="navView" 
+                           AlwaysShowHeader="True" 
+                           Header="{Binding SelectedItem.Content, RelativeSource={RelativeSource Self}, FallbackValue=' '}" 
+                           Grid.Row="1" 
+                           PaneDisplayMode="Left" 
+                           IsTitleBarAutoPaddingEnabled="False"
+                           IsPaneOpen="True" 
+                           OpenPaneLength="240" 
+                           IsBackEnabled="{Binding ElementName=contentFrame, Path=CanGoBack}" 
+                           BackRequested="navView_BackRequested" 
+                           ItemInvoked="navView_ItemInvoked"
+                           PaneOpening="navView_PaneOpening" 
+                           PaneClosing="navView_PaneClosing" 
+                           DisplayModeChanged="navView_DisplayModeChanged">
+            <ui:NavigationView.MenuItems>
+                <ui:NavigationViewItemHeader x:Name="navHeaderInventory" Content="Inventory"/>
+                <ui:NavigationViewItem x:Name="navItemOverview" Content="Overview" local:NavigationProperties.NavigationUri="Views/InventoryView.xaml">
+                    <ui:NavigationViewItem.Icon>
+                        <ui:FontIcon Glyph="&#xF158;"/>
+                    </ui:NavigationViewItem.Icon>
+                </ui:NavigationViewItem>
+                <ui:NavigationViewItem x:Name="navItemAudits" Content="Audits" local:NavigationProperties.NavigationUri="Views/AuditView.xaml">
+                    <ui:NavigationViewItem.Icon>
+                        <ui:FontIcon Glyph="&#xE770;"/>
+                    </ui:NavigationViewItem.Icon>
+                </ui:NavigationViewItem>
+            </ui:NavigationView.MenuItems>
+
+            <ui:NavigationView.PaneFooter>
+                <StackPanel Margin="10">
+                    <Label x:Name="lblGreeting"
+                    Content="You are not logged in." FontSize="14" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
+                           Margin="0 0 0 5"/>
+                    <Label x:Name="lblRoleDisplay" Content="You are logged in as: " FontSize="14" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
+                           Margin="0 0 0 5" Visibility="Collapsed"/>
+                    <TextBox x:Name="txtEmail" ui:ControlHelper.PlaceholderText="Email Address"
+                             Margin="0 0 0 5" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" FontSize="14"/>
+                    <PasswordBox x:Name="pwdPassword" ui:ControlHelper.PlaceholderText="Password"
+                        Margin="0 0 0 5" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" FontSize="14"/>
+                    <Button x:Name="btnLoginLogout" Content="Log In" FontSize="14" 
+                            FontWeight="Bold" Click="btnLoginLogout_Click" HorizontalAlignment="Stretch"/>
+                </StackPanel>
+            </ui:NavigationView.PaneFooter>
+
+            <Frame x:Name="contentFrame" NavigationUIVisibility="Hidden" />
+        </ui:NavigationView>
+
+
+        <StatusBar Grid.Row="2">
+            <StatusBarItem x:Name="statMessage" 
+                    Content="Welcome. Please log in to continue."
+                    Padding="20 0 0 0" />
+        </StatusBar>
+    </Grid>
+</Window>

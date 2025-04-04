@@ -1,0 +1,33 @@
+﻿<Window x:Class="PresentationLayer.Views.ViewAudit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PresentationLayer.Views"
+        mc:Ignorable="d"
+        xmlns:modernwpf="clr-namespace:ModernWpf.Controls;assembly=ModernWpf"
+        xmlns:toolkit="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+        Title="ViewAudit" Height="450" Width="800">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="4*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <TextBlock Text="Audit ID:" Margin="0,0,0,5" Foreground="White"/>
+                <TextBlock Text="User's Name:" Margin="0,0,0,5" Foreground="White"/>
+                <TextBlock Text="Table Name:" Margin="0,0,0,5" Foreground="White"/>
+                <TextBlock Text="Operation:" Margin="0,0,0,5" Foreground="White"/>
+                <TextBlock Text="Timestamp:" Margin="0,0,0,5" Foreground="White"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

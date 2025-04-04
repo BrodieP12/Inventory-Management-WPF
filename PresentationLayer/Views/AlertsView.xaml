@@ -1,0 +1,48 @@
+﻿<Page x:Class="PresentationLayer.Views.AlertsView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PresentationLayer.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AlertsView">
+
+    <Grid x:Name="gridAlert" Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock x:Name="txtblkNoAlerts" Text="No Alerts to display." HorizontalAlignment="Center"
+   VerticalAlignment="Center" Visibility="Collapsed"/>
+        <DataGrid x:Name="dgAlert" AutoGenerateColumns="False" HeadersVisibility="Column"
+  CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True"
+  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  SelectionMode="Single" 
+  Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="4">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding AuditID}" Width="Auto"/>
+                <DataGridTextColumn Header="Operation" Binding="{Binding Operation}" Width="*"/>
+                <DataGridTextColumn Header="Table" Binding="{Binding TableName}" Width="*"/>
+                <DataGridTextColumn Header="ChangedBy" Binding="{Binding UserFullName}" Width="*"/>
+                <DataGridTextColumn Header="Timestamp" Binding="{Binding Timestamp}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10 5 10 10">
+            <Button x:Name="btnViewAlert" Content="View Audit" Width="120" Margin="0 0 10 0"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10 5 10 10">
+            <Button x:Name="btnEditAlert" Content="View Audit" Width="120" Margin="0 0 10 0"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10 5 10 10">
+            <Button x:Name="btnDeleteAlert" Content="View Audit" Width="120" Margin="0 0 10 0"/>
+        </StackPanel>
+    </Grid>
+</Page>
